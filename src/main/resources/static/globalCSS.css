@@ -1,0 +1,15 @@
+/* Root allows us to create a single property and apply it across multiple elements*/
+:root {
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --bg-tertiary: #2a2a2a;
+}
+
+/* ----- Header/Body Styling ------ */
+body {
+    background-color: var(--bg-primary);
+    color: var(--bg-secondary);
+    font-family: Arial, Helvitica, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
