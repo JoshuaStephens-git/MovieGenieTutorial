@@ -34,19 +34,37 @@
 
 .selector-btn {
     /*styles*/
-    background-color: var(--bg-primary);
+    background-color: var(--border-primary);
     color: var(--text-secondary);
     border: 1px solid #444;
 
     /*formatting*/
     padding: 8px 16px;
-    border-radius: 8px;
+    border-radius: 20px;
     cursor: pointer;
     transition: var(--transition-standard);
+    font-size: 14px;
 }
 
 .selector-btn:hover {
     background-color: var(--bg-secondary);
     border-color: #666;
+}
+
+.selector-btn.active {
+    /*controls how the button looks when clicked*/
+    /*Note: this class will be added via JS in a future step*/
+    background-color: var(--accent-color);
+    color: var(--bg-primary);
+    border-color: var(--accent-color);
+    font-weight: bold;
+}
+
+.submit-history-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-top: 20px;
+    justify-content: center;
 }
 
