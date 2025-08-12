@@ -14,6 +14,6 @@ public String homeRedirect() {
 }
 @GetMapping("/home")
     public String home() {
-        return "homeHTML";
+        return "home";
     }
 }
