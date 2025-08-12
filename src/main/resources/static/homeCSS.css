@@ -1,0 +1,52 @@
+/* Movie Form Styling */
+.movie-form {
+    /* general placement */
+    max-width: fit-content;
+    margin: 0 auto;
+    padding: 15px;
+    border-radius: 8px;
+    display: block;
+
+    /*stylistic properties*/
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+}
+
+/* Decade/Genre container styles */
+.movie-selection-container {
+    margin-top: 20px;
+    text-align: center;
+}
+.movie-selection-container label {
+    display: block;
+    margin: 10px 0;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Button styling */
+.btn-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.selector-btn {
+    /*styles*/
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
+    border: 1px solid #444;
+
+    /*formatting*/
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition-standard);
+}
+
+.selector-btn:hover {
+    background-color: var(--bg-secondary);
+    border-color: #666;
+}
+
