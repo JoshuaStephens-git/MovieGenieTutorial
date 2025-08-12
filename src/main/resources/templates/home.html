@@ -28,7 +28,7 @@
             <div class="movie-selection-container">
                 <label>Select a decade</label>
                 <div class="btn-container" id="decade-btns">
-                    <button type="button" class="selector-btn" value="all" selected>All Decades</button>
+                    <button type="button" class="selector-btn" value="all">All Decades</button>
                     <button type="button" class="selector-btn" value="pre70s">Pre-1970s</button>
                     <button type="button" class="selector-btn" value="70s">1970-1980</button>
                     <button type="button" class="selector-btn" value="80s">1980-1990</button>
@@ -37,6 +37,8 @@
                     <button type="button" class="selector-btn" value="10s">2010-2020</button>
                     <button type="button" class="selector-btn" value="20s">2020-current</button>
                 </div>
+                <!-- We include this so our JS can 'select' a button and pass this to the HomeController-->
+                <input type="hidden" name="decade" id="selected-decade" th:value="${selectedDecade != null ? selectedDecade : 'all'}">
             </div>
 
             <!--
@@ -47,7 +49,7 @@
             <div class="movie-selection-container">
                 <label>Select a genre</label>
                 <div class="btn-container" id="genre-btns">
-                    <button type="button" class="selector-btn" value="all" selected>All Genres</button>
+                    <button type="button" class="selector-btn" value="all">All Genres</button>
                     <button type="button" class="selector-btn" value="action">Action</button>
                     <button type="button" class="selector-btn" value="adventure">Adventure</button>
                     <button type="button" class="selector-btn" value="comedy">Comedy</button>
@@ -67,14 +69,17 @@
                     <button type="button" class="selector-btn" value="war">War</button>
                     <button type="button" class="selector-btn" value="western">Western</button>
                 </div>
+                <!-- We include this so our JS can 'select' a button and pass this to the HomeController-->
+                <input type="hidden" name="genre" id="selected-genre" th:value="${selectedGenre != null ? selectedGenre : 'all'}">
             </div>
 
             <!-- We will add a submit button and view history link.
             We will have to create history.html and update the HomeController.java
             for the link to function
             -->
-            <div class="action-row">
-                <button type="submit" class="action-btn">Submit</button>
+            <div class="submit-history-container">
+                <!--class will call btn and btn-primary css properties-->
+                <button type="submit" class="btn btn-primary">Generate Movies</button>
                 <a href="/history">View History</a>
             </div>
         </form>
@@ -86,5 +91,7 @@
     <p> Thank you for viewing the website!</p>
 </footer>
 
+<!-- We will place the call to our JavaScript file here-->
+<script th:src="@{/js/home.js}"></script>
 </body>
 </html>
