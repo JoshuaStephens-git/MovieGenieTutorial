@@ -53,7 +53,6 @@
 
 .selector-btn.active {
     /*controls how the button looks when clicked*/
-    /*Note: this class will be added via JS in a future step*/
     background-color: var(--accent-color);
     color: var(--bg-primary);
     border-color: var(--accent-color);
@@ -68,3 +67,66 @@
     justify-content: center;
 }
 
+/* Movie Card Styles */
+.movie-results {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Individual Movie Card */
+.movie-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: var(--shadow-standard);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.movie-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.movie-card h3 {
+    margin-top: 0;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.movie-card h3 a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.movie-card h3 a:hover {
+    text-decoration: underline;
+}
+
+.poster {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.movie-card p {
+    margin: 5px 0;
+    color: var(--text-tertiary);
+    text-align: center;
+}
+
+a {
+    color: var(--text-primary);
+    text-decoration: underline;
+}
+
+.overview-container {
+    flex-grow: 1;
+    padding: 5px 15px;
+}
