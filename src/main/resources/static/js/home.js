@@ -1,16 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Get the containers and the hidden input fields
-    const decadeBtnContainer = document.getElementById('decade-btns');
-    const genreBtnContainer = document.getElementById('genre-btns');
-    const selectedDecadeInput = document.getElementById('selected-decade');
-    const selectedGenreInput = document.getElementById('selected-genre');
 
-    // This function sets the active button based on the hidden input's value
-    function setInitialActiveState(container, hiddenInput) {
-        const selectedValue = hiddenInput.value;
+    function updateActiveButton(container, selectedValue) {
         const buttons = container.querySelectorAll('.selector-btn');
         buttons.forEach(btn => {
-            // If the button's value matches the selected value, make it active
             if (btn.value === selectedValue) {
                 btn.classList.add('active');
             } else {
@@ -19,29 +11,30 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // This function handles a new selection when a button is clicked
-    function handleSelection(event, container, hiddenInput) {
-        if (!event.target.matches('.selector-btn')) {
-            return;
-        }
-        hiddenInput.value = event.target.value;
-        const buttons = container.querySelectorAll('.selector-btn');
-        buttons.forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
-    }
-
     // --- INITIALIZATION ---
-    // This part runs automatically when the page loads
-    setInitialActiveState(decadeBtnContainer, selectedDecadeInput);
-    setInitialActiveState(genreBtnContainer, selectedGenreInput);
+    // This part reads the value and calls the update function.
+    const initialDecade = document.getElementById('selected-decade').value;
+    updateActiveButton(document.getElementById('decade-btns'), initialDecade);
+
+    const initialGenre = document.getElementById('selected-genre').value;
+    updateActiveButton(document.getElementById('genre-btns'), initialGenre);
+
 
     // --- EVENT LISTENERS ---
-    // This part waits for user clicks
-    decadeBtnContainer.addEventListener('click', function(event) {
-        handleSelection(event, decadeBtnContainer, selectedDecadeInput);
+    // The click handler updates the data and calls the same update function.
+    document.getElementById('decade-btns').addEventListener('click', function(event) {
+        if (event.target.matches('.selector-btn')) {
+            const selectedValue = event.target.value;
+            document.getElementById('selected-decade').value = selectedValue;
+            updateActiveButton(event.currentTarget, selectedValue);
+        }
     });
 
-    genreBtnContainer.addEventListener('click', function(event) {
-        handleSelection(event, genreBtnContainer, selectedGenreInput);
+    document.getElementById('genre-btns').addEventListener('click', function(event) {
+        if (event.target.matches('.selector-btn')) {
+            const selectedValue = event.target.value;
+            document.getElementById('selected-genre').value = selectedValue;
+            updateActiveButton(event.currentTarget, selectedValue);
+        }
     });
 });
