@@ -4,14 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Movie Genie</title>
-    <!-- We will create these CSS files in the next step -->
     <link rel="stylesheet" th:href="@{/globalCSS.css}">
     <link rel="stylesheet" th:href="@{/homeCSS.css}">
 </head>
 <body>
-<header class="site-header">
-    <h1>The Movie Genie</h1>
-</header>
+<header th:insert="~{fragments/header :: header}"></header>
 
 <main>
     <h2>From classic reels to modern feels - pick a decade and genre to begin</h2>
@@ -106,12 +103,9 @@
     </section>
 </main>
 
-<footer>
-    <!-- We will eventually add navigation, policies, etc -->
-    <p> Thank you for viewing the website!</p>
-</footer>
+<footer th:insert="~{fragments/footer :: footer}"></footer>
 
-<!-- We will place the call to our JavaScript file here-->
+<!-- JavaScript-->
 <script th:src="@{/js/home.js}"></script>
 </body>
 </html>
