@@ -21,7 +21,6 @@ public class MovieQuery {
             case "drama" -> "18";
             case "family" -> "10751";
             case "fantasy" -> "14";
-            case "game-show" -> "10763";
             case "history" -> "36";
             case "horror" -> "27";
             case "musical" -> "10402";
