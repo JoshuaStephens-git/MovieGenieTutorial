@@ -49,9 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    /**
-     * Renders the pagination controls (buttons and page indicator).
-     */
+
     function renderPaginationControls() {
         paginationControls.innerHTML = ''; // Clear previous controls
         const totalPages = Math.ceil(history.length / moviesPerPage);
@@ -86,9 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
         paginationControls.appendChild(nextButton);
     }
 
-    /**
-     * Main function to update the entire view based on the current history data.
-     */
+
     function updateView() {
         if (history.length > 0) {
             noHistoryMessage.style.display = 'none';
@@ -103,16 +99,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    /**
-     * Loads history from local storage and initializes the view.
-     */
     function loadHistory() {
         const historyJSON = localStorage.getItem('movieHistory');
         history = historyJSON ? JSON.parse(historyJSON) : [];
         updateView();
     }
 
-    // --- 5. Event Listeners ---
 
     clearHistoryButton.addEventListener('click', function() {
         if (confirm('Are you sure you want to clear your entire movie history?')) {
@@ -123,6 +115,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // --- 6. Initial Load ---
     loadHistory();
 });
