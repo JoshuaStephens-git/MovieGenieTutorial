@@ -1,0 +1,209 @@
+/* Root allows us to create a single property and apply it across multiple elements*/
+:root {
+    /* Background color*/
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --bg-tertiary: #2a2a2a;
+
+    /*Button colors*/
+    --bg-button: #3a3a3a;
+    --bg-button-hover: #555;
+    --bg-destructive: #c94c4c;
+
+    /* Text color */
+    --text-primary: #ffffff;
+    --text-secondary: #e0e0e0;
+    --text-tertiary: #cccccc;
+    --text-muted: #888888;
+    --text-disabled: #666666;
+
+    /* Border color */
+    --border-primary: #2c2c2c;
+    --border-secondary: #555;
+
+    /* Accent color */
+    --accent-color: #82aaff;
+
+    /* Misc */
+    --transition-standard: all 0.2s ease;
+    --shadow-standard: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+/* ------ Generic Btn Styles ----- */
+.btn {
+    padding: 0.625rem 1.125rem;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: var(--transition-standard);
+}
+.btn-primary {
+    background-color: var(--bg-button);
+    color: var(--text-secondary);
+}
+
+.btn-primary:hover {
+    background-color: var(--bg-button-hover);
+}
+
+.btn-destructive {
+    background-color: transparent;
+    border-color: var(--border-secondary);
+    color: var(--text-tertiary);
+}
+
+.btn-destructive:hover {
+    background-color: var(--bg-destructive);
+    border-color: var(--bg-destructive);
+    color: var(--text-primary);
+}
+
+/* ----- Header Styling ---- */
+
+/*
+Placeholder header styling
+To be deleted upon addition of genie logo
+ */
+header {
+    text-align: center;
+}
+
+.logo-container a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+}
+
+.genie-logo {
+    max-width: 50%;
+    height: auto;
+    transition: var(--transition-standard);
+    transform: translateX(10%);
+}
+
+/* ----- Body Styling ------ */
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: var(--text-primary);
+}
+
+a {
+    color: #82aaff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* FOOTER */
+/* back home button */
+.navigation-bar {
+    text-align: center;
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+
+.back-home-button:hover {
+    background-color: #555;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 40px 20px;
+    border-top: 1px solid var(--border-primary);
+    color: var(--text-muted);
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* home/history/about/contact nav */
+.footer-nav-container {
+    margin-bottom: 25px;
+}
+
+.footer-nav, .footer-legal {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.footer-nav a, .footer-legal a {
+    text-decoration: none;
+    transition: color var(--transition-standard);
+}
+
+.footer-nav a {
+    color: var(--text-tertiary);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.footer-nav a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+/* tmdb attribution */
+.footer-attributes {
+    margin-bottom: 15px;
+}
+
+.footer-attributes p {
+    margin: 8px 0;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.tmdb-logo {
+    height: 20px;
+    width: auto;
+    margin-top: 5px;
+    opacity: 0.7;
+}
+
+/* privacy/cookie/term links */
+.footer-legal {
+    margin-top: 15px;
+    gap: 20px;
+}
+
+.footer-legal a {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.footer-legal a:hover {
+    color: var(--text-tertiary);
+}
+
+/* credit to creator styling */
+.footer-credit p {
+    font-size: 12px;
+    margin: 0;
+    color: var(--text-disabled);
+}
+
+/*Mobile styling*/
+/*logo*/
+@media (max-width: 768px) {
+    .genie-logo {
+        transform: translateX(5%);
+        max-width: 75%;
+    }
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script id="cookieyes" type="text/javascript"
+            src="https://cdn-cookieyes.com/client_data/2446a4a9209e9fedf8906b7d/script.js">
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Movie Genie</title>
+    <link rel="stylesheet" th:href="@{/globalCSS.css}">
+    <link rel="stylesheet" th:href="@{/homeCSS.css}">
+</head>
+<body>
+<header th:insert="~{fragments/header :: header}"></header>
+
+<main>
+    <h2>From classic reels to modern feels - pick a decade and genre to begin</h2>
+
+    <!-- The <section> element will hold all user selection choices -->
+    <section class="movie-selection-section">
+        <!--
+        We know we will have to search for movies based on the form inputs,
+        so we will add method="get" and action="/home" to send the form to a
+        method we will create in the HomeController.java
+        -->
+        <form action="/home" method="get" class="movie-form">
+            <!-- This container will hold the decade selection buttons -->
+            <div class="movie-selection-container">
+                <label>Select a decade</label>
+                <div class="btn-container" id="decade-btns">
+                    <button type="button" class="selector-btn" value="all">All Decades</button>
+                    <button type="button" class="selector-btn" value="pre70s">Pre-1970s</button>
+                    <button type="button" class="selector-btn" value="70s">1970-1980</button>
+                    <button type="button" class="selector-btn" value="80s">1980-1990</button>
+                    <button type="button" class="selector-btn" value="90s">1990-2000</button>
+                    <button type="button" class="selector-btn" value="00s">2000-2010</button>
+                    <button type="button" class="selector-btn" value="10s">2010-2020</button>
+                    <button type="button" class="selector-btn" value="20s">2020-current</button>
+                </div>
+                <!-- We include this so our JS can 'select' a button and pass this to the HomeController-->
+                <input type="hidden" name="decade" id="selected-decade" th:value="${selectedDecade != null ? selectedDecade : 'all'}">
+            </div>
+
+            <!--
+            This container will hold the genre selection buttons
+            Feel free to include as many or as few genres as you want,
+            but the more genres included, the more robust the website will be
+            -->
+            <div class="movie-selection-container">
+                <label>Select a genre</label>
+                <div class="btn-container" id="genre-btns">
+                    <button type="button" class="selector-btn" value="all">All Genres</button>
+                    <button type="button" class="selector-btn" value="action">Action</button>
+                    <button type="button" class="selector-btn" value="adventure">Adventure</button>
+                    <button type="button" class="selector-btn" value="comedy">Comedy</button>
+                    <button type="button" class="selector-btn" value="horror">Horror</button>
+                    <button type="button" class="selector-btn" value="sci-fi">Sci-Fi</button>
+                    <button type="button" class="selector-btn" value="animation">Animation</button>
+                    <button type="button" class="selector-btn" value="crime">Crime</button>
+                    <button type="button" class="selector-btn" value="documentary">Documentary</button>
+                    <button type="button" class="selector-btn" value="drama">Drama</button>
+                    <button type="button" class="selector-btn" value="family">Family</button>
+                    <button type="button" class="selector-btn" value="fantasy">Fantasy</button>
+                    <button type="button" class="selector-btn" value="history">History</button>
+                    <button type="button" class="selector-btn" value="musical">Musical</button>
+                    <button type="button" class="selector-btn" value="mystery">Mystery</button>
+                    <button type="button" class="selector-btn" value="romance">Romance</button>
+                    <button type="button" class="selector-btn" value="thriller">Thriller</button>
+                    <button type="button" class="selector-btn" value="war">War</button>
+                    <button type="button" class="selector-btn" value="western">Western</button>
+                </div>
+                <!-- We include this so our JS can 'select' a button and pass this to the HomeController-->
+                <input type="hidden" name="genre" id="selected-genre" th:value="${selectedGenre != null ? selectedGenre : 'all'}">
+            </div>
+
+            <!-- We will add a submit button and view history link.
+            We will have to create history.html and update the HomeController.java
+            for the link to function
+            -->
+            <div class="submit-history-container">
+                <!--class will call btn and btn-primary css properties-->
+                <button type="submit" class="btn btn-primary">Generate Movies</button>
+                <a href="/history">View History</a>
+            </div>
+        </form>
+    </section>
+
+    <section class="movie-results-section">
+        <div class="movie-results">
+            <div class="movie-card" th:each="movie : ${movies}">
+                <h3>
+                    <a th:href="'https://www.themoviedb.org/movie/' + ${movie.id}" target="_blank" th:text="${movie.title}">
+                        Movie Title
+                    </a>
+                </h3>
+                <a th:href="'https://www.themoviedb.org/movie/' + ${movie.id}" target="_blank">
+                    <img class = "poster" th:src="'https://image.tmdb.org/t/p/w200' + ${movie.posterPath}" alt="Poster"/>
+                </a>
+                <p><strong>Release Date:</strong> <span th:text="${movie.formattedReleaseDate}">2025-01-01</span></p>
+                <p><strong>Rating:</strong> <span th:text="${movie.formattedRating}">7.5</span></p>
+                <div class="overview-container">
+                    <p class="overview" id="overview" th:text="${movie.overview}">Summary</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer th:insert="~{fragments/footer :: footer}"></footer>
+
+<!-- JavaScript-->
+<script id="movies-data" type="application/json"
+        th:if="${moviesJson}"
+        th:utext="${moviesJson}">
+</script>
+<script th:src="@{/js/home.js}"></script>
+</body>
+</html>

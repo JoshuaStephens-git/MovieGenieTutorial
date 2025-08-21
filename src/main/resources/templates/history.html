@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie History</title>
+  <link rel="stylesheet" th:href="@{/globalCSS.css}">
+  <link rel="stylesheet" th:href="@{/historyCSS.css}">
+</head>
+<body>
+<!-- HEADER -->
+<header th:insert="~{fragments/header :: header}"></header>
+
+<main>
+  <h2>Your Movie History</h2>
+
+  <div class="history-container">
+    <ul id="history-list"></ul>
+
+    <div id="pagination-controls" class="pagination-controls"></div>
+
+    <div id="no-history-message" class="no-history" style="display: none;">
+      <p>No movies in your history yet.</p>
+    </div>
+
+    <div class="action-bar">
+      <button id="clear-history-button" class="btn btn-destructive">Clear History</button>
+      <a href="/home" class="btn btn-primary">← Back to the Genie</a>
+    </div>
+  </div>
+</main>
+
+<!--FOOTER-->
+<footer th:insert="~{fragments/footer :: footer}"></footer>
+
+<!-- JS SCRIPT -->
+<script th:src="@{/js/history.js}"></script>
+
+</body>
+</html>
