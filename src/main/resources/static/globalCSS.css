@@ -22,7 +22,7 @@
     --border-secondary: #555;
 
     /* Accent color */
-    --accent-color: #82aaff;
+    --accent-color: #A95CE8;
 
     /* Misc */
     --transition-standard: all 0.2s ease;
@@ -60,15 +60,6 @@
 }
 
 /* ----- Header Styling ---- */
-
-/*
-Placeholder header styling
-To be deleted upon addition of genie logo
- */
-header {
-    text-align: center;
-}
-
 .logo-container a {
     display: flex;
     justify-content: center;
