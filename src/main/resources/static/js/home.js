@@ -41,35 +41,28 @@ document.addEventListener('DOMContentLoaded', function () {
     function saveMoviesToHistory(newMovies) {
         const consentCookie = document.cookie.split('; ').find(row => row.startsWith('cookieyes-consent='));
         if (consentCookie && consentCookie.includes('functional:no')) {
-            console.log('User has declined functional cookies. History will not be saved.');
-            return;
+            return console.log('User has declined functional cookies. History will not be saved.');
         }
-        const historyJSON = localStorage.getItem('movieHistory');
-        let history = historyJSON ? JSON.parse(historyJSON) : [];
-        history.unshift(...newMovies);
+
         const MAX_HISTORY_SIZE = 50;
-        if (history.length > MAX_HISTORY_SIZE) {
-            history = history.slice(0, MAX_HISTORY_SIZE);
-        }
-        localStorage.setItem('movieHistory', JSON.stringify(history));
+        const history = JSON.parse(localStorage.getItem('movieHistory') || '[]');
+        const updatedHistory = [...newMovies, ...history].slice(0, MAX_HISTORY_SIZE);
+
+        localStorage.setItem('movieHistory', JSON.stringify(updatedHistory));
         console.log('Movie history saved to local storage.');
     }
 
-    const moviesDataElement = document.getElementById('movies-data');
-    if (moviesDataElement) {
-        try {
-            const moviesFromServer = JSON.parse(moviesDataElement.textContent);
-            if (moviesFromServer && moviesFromServer.length > 0) {
-                const moviesToSave = moviesFromServer.map(movie => ({
-                    id: movie.id,
-                    title: movie.title,
-                    releaseDate: movie.releaseDate,
-                    rating: movie.rating
-                }));
-                saveMoviesToHistory(moviesToSave);
-            }
-        } catch (e) {
-            console.error("Could not parse movie data from server:", e);
+    try {
+        const moviesDataElement = document.getElementById('movies-data');
+        const moviesFromServer = JSON.parse(moviesDataElement?.textContent || '[]');
+
+        if (moviesFromServer.length > 0) {
+            const moviesToSave = moviesFromServer.map(
+                ({ id, title, releaseDate, rating }) => ({ id, title, releaseDate, rating })
+            );
+            saveMoviesToHistory(moviesToSave);
         }
+    } catch (e) {
+        console.error("Could not parse movie data from server:", e);
     }
 });
