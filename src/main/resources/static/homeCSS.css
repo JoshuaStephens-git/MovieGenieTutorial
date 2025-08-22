@@ -1,13 +1,10 @@
 /* Movie Form Styling */
 .movie-form {
-    /* general placement */
     max-width: fit-content;
     margin: 0 auto;
     padding: 15px;
     border-radius: 8px;
     display: block;
-
-    /*stylistic properties*/
     background-color: var(--bg-secondary);
     color: var(--text-secondary);
 }
@@ -33,12 +30,9 @@
 }
 
 .selector-btn {
-    /*styles*/
     background-color: var(--border-primary);
     color: var(--text-secondary);
     border: 1px solid #444;
-
-    /*formatting*/
     padding: 8px 16px;
     border-radius: 20px;
     cursor: pointer;
@@ -47,12 +41,11 @@
 }
 
 .selector-btn:hover {
-    background-color: var(--bg-secondary);
+    background-color: var(--bg-button-hover);
     border-color: #666;
 }
 
 .selector-btn.active {
-    /*controls how the button looks when clicked*/
     background-color: var(--accent-color);
     color: var(--bg-primary);
     border-color: var(--accent-color);
