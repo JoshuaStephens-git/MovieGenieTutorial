@@ -68,7 +68,8 @@
 }
 
 .genie-logo {
-    max-width: 50%;
+    width: 40vw;
+    min-width: 100px;
     height: auto;
     transition: var(--transition-standard);
     transform: translateX(10%);
