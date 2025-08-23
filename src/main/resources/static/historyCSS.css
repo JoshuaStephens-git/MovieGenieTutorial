@@ -30,12 +30,6 @@
     color: var(--text-primary);
 }
 
-.history-container li p {
-    margin: 4px 0;
-    color: var(--text-tertiary);
-    font-size: 14px;
-}
-
 .history-container li h3 a {
     text-decoration: none;
     color: inherit;
@@ -43,6 +37,12 @@
 
 .history-container li h3 a:hover {
     text-decoration: underline;
+}
+
+.history-container li p {
+    margin: 4px 0;
+    color: var(--text-tertiary);
+    font-size: 14px;
 }
 
 .no-history p {
