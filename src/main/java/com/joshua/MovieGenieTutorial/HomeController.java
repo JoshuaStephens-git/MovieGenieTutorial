@@ -70,4 +70,9 @@ public class HomeController {
     public String history() {
         return "history";
     }
+
+    @GetMapping("/about")
+    public String about() {
+        return "about";
+    }
 }
