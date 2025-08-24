@@ -1,0 +1,71 @@
+/* see globalCSS.css for body/header/footer*/
+
+/* main  */
+.about-container {
+    max-width: 750px;
+    margin: 40px auto;
+    background-color: var(--bg-secondary);
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-standard);
+}
+
+/* blockquote styling*/
+.about-container blockquote {
+    border-left: 4px solid #82aaff;
+    margin: 30px 0;
+    padding: 10px 20px;
+    font-style: italic;
+    color: var(--text-secondary);
+    border-radius: 15px;
+}
+
+.about-container blockquote p {
+    margin: 0;
+}
+
+/* text stylings */
+h2, h3 {
+    text-align: center;
+    color: var(--text-primary);
+    font-size: 1.5em;
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 40px;
+}
+
+h3 {
+    border-top: var(--seperator-line);
+    padding-top: 25px;
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+.about-container p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #cccccc;
+    margin-bottom: 1em;
+}
+
+.about-container ul {
+    list-style-type: none;
+    padding-left: 5px;
+    margin-top: 20px;
+}
+
+.about-container li {
+    padding-left: 25px;
+    position: relative;
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+.about-container li::before {
+    content: '✨';
+    position: absolute;
+    left: 0;
+    top: 0;
+}
