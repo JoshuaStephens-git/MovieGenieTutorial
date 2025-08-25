@@ -14,7 +14,9 @@
 <header th:insert="~{fragments/header :: header}"></header>
 
 <main>
-    <h2>From classic reels to modern feels - pick a decade and genre to begin</h2>
+    <h2>
+        From classic reels to modern feels, see what the movie genie reveals
+    </h2>
 
     <!-- The <section> element will hold all user selection choices -->
     <section class="movie-selection-section">
@@ -24,6 +26,9 @@
         method we will create in the HomeController.java
         -->
         <form action="/home" method="get" class="movie-form">
+            <h3>
+                Pick a decade and genre to begin
+            </h3>
             <!-- This container will hold the decade selection buttons -->
             <div class="movie-selection-container">
                 <label>Select a decade</label>
@@ -49,28 +54,34 @@
             <div class="movie-selection-container">
                 <label>Select a genre</label>
                 <div class="btn-container" id="genre-btns">
+                    <!-- always displayed -->
                     <button type="button" class="selector-btn" value="all">All Genres</button>
                     <button type="button" class="selector-btn" value="action">Action</button>
                     <button type="button" class="selector-btn" value="adventure">Adventure</button>
                     <button type="button" class="selector-btn" value="comedy">Comedy</button>
                     <button type="button" class="selector-btn" value="horror">Horror</button>
                     <button type="button" class="selector-btn" value="sci-fi">Sci-Fi</button>
-                    <button type="button" class="selector-btn" value="animation">Animation</button>
-                    <button type="button" class="selector-btn" value="crime">Crime</button>
-                    <button type="button" class="selector-btn" value="documentary">Documentary</button>
-                    <button type="button" class="selector-btn" value="drama">Drama</button>
-                    <button type="button" class="selector-btn" value="family">Family</button>
-                    <button type="button" class="selector-btn" value="fantasy">Fantasy</button>
-                    <button type="button" class="selector-btn" value="history">History</button>
-                    <button type="button" class="selector-btn" value="musical">Musical</button>
-                    <button type="button" class="selector-btn" value="mystery">Mystery</button>
-                    <button type="button" class="selector-btn" value="romance">Romance</button>
-                    <button type="button" class="selector-btn" value="thriller">Thriller</button>
-                    <button type="button" class="selector-btn" value="war">War</button>
-                    <button type="button" class="selector-btn" value="western">Western</button>
+
+                    <!-- Hidden on mobile -->
+                    <div class="secondary-btn">
+                        <button type="button" class="selector-btn" value="animation">Animation</button>
+                        <button type="button" class="selector-btn" value="crime">Crime</button>
+                        <button type="button" class="selector-btn" value="documentary">Documentary</button>
+                        <button type="button" class="selector-btn" value="drama">Drama</button>
+                        <button type="button" class="selector-btn" value="family">Family</button>
+                        <button type="button" class="selector-btn" value="fantasy">Fantasy</button>
+                        <button type="button" class="selector-btn" value="history">History</button>
+                        <button type="button" class="selector-btn" value="musical">Musical</button>
+                        <button type="button" class="selector-btn" value="mystery">Mystery</button>
+                        <button type="button" class="selector-btn" value="romance">Romance</button>
+                        <button type="button" class="selector-btn" value="thriller">Thriller</button>
+                        <button type="button" class="selector-btn" value="war">War</button>
+                        <button type="button" class="selector-btn" value="western">Western</button>
+                    </div>
                 </div>
                 <!-- We include this so our JS can 'select' a button and pass this to the HomeController-->
                 <input type="hidden" name="genre" id="selected-genre" th:value="${selectedGenre != null ? selectedGenre : 'all'}">
+                <button type="button" id="show-more-genres">Show More <span class="arrow">↓</span></button>
             </div>
 
             <!-- We will add a submit button and view history link.
@@ -79,7 +90,7 @@
             -->
             <div class="submit-history-container">
                 <!--class will call btn and btn-primary css properties-->
-                <button type="submit" class="btn btn-primary">Generate Movies</button>
+                <button type="submit" id="submit-btn" class="btn btn-primary">Generate Movies</button>
                 <a href="/history">View History</a>
             </div>
         </form>
