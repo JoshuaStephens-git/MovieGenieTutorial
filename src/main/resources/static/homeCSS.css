@@ -1,3 +1,25 @@
+/* General page-specific styling */
+h3 {
+    text-align: center;
+    color: var(--text-primary);
+    margin: 0 0 0 0;
+}
+
+a {
+    color: var(--text-primary);
+    text-decoration: underline;
+}
+
+button {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--border-primary);
+    color: #e0e0e0;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
 /* Movie Form Styling */
 .movie-form {
     max-width: fit-content;
@@ -46,10 +68,48 @@
 }
 
 .selector-btn.active {
-    background-color: var(--accent-color);
-    color: var(--bg-primary);
+    background: linear-gradient(90deg, rgba(24.7, 60.8, 88.2, 1) 0%, rgba(72.9, 52.5, 76.5, 1) 100%);
+    color: var(--text-primary);
     border-color: var(--accent-color);
     font-weight: bold;
+    background-size: 200% auto;
+    animation: radiate 3s ease-in-out infinite;
+}
+
+/* Define the animations movement */
+@keyframes radiate {
+    0% {
+        background-position: 0 25%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+/* show more genres btn */
+.secondary-btn {
+    display: contents;
+}
+
+#show-more-genres {
+    display: none;
+    background-color: transparent;
+    border: 1px solid var(--border-secondary);
+    color: var(--text-tertiary);
+    padding: 8px 14px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: var(--transition-standard);
+}
+
+#show-more-genres .arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
 }
 
 .submit-history-container {
@@ -58,6 +118,11 @@
     align-items: center;
     margin-top: 20px;
     justify-content: center;
+}
+#submit-btn {
+    background: linear-gradient(90deg, rgba(24.7, 60.8, 88.2, 1) 0%, rgba(72.9, 52.5, 76.5, 1) 100%);
+    background-size: 200% auto;
+    animation: radiate 3s ease-in-out infinite;
 }
 
 /* Movie Card Styles */
@@ -114,12 +179,109 @@
     text-align: center;
 }
 
-a {
-    color: var(--text-primary);
-    text-decoration: underline;
-}
-
 .overview-container {
     flex-grow: 1;
     padding: 5px 15px;
+}
+
+/* Mobile stlying */
+@media (max-width: 768px) {
+    /* Form/button styles  */
+    .movie-form {
+        padding: 15px;
+    }
+
+    .movie-selection-container label {
+        font-size: 1em;
+    }
+
+    .btn-container {
+        gap: 8px;
+    }
+
+    .selector-btn {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+    /* show more genre btn */
+    .secondary-btn {
+        display: none;
+    }
+
+    #show-more-genres {
+        display: inline-block;
+    }
+
+    .movie-selection-container.show-all .secondary-btn {
+        display: contents;
+    }
+
+    .movie-selection-container.show-all + #show-more-genres .arrow {
+        transform: rotate(180deg);
+    }
+
+    /* Movie Card Grid */
+    .movie-results {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .movie-card {
+        transform: none;
+        box-shadow: var(--shadow-standard);
+    }
+
+    .movie-card:hover {
+        transform: none;
+    }
+
+    /* show summary btn */
+    /* NEED TO update tutorial to include show summary btn for mobile */
+    /*.overview-container {*/
+    /*    max-height: 0;*/
+    /*    overflow: hidden;*/
+    /*    position: relative;*/
+    /*    transition: max-height 0.3s ease;*/
+    /*}*/
+
+    /*.overview-container::after {*/
+    /*    content: '';*/
+    /*    position: absolute;*/
+    /*    bottom: 0;*/
+    /*    left: 0;*/
+    /*    right: 0;*/
+    /*    height: 1.5em;*/
+    /*    background: linear-gradient(to bottom, transparent, var(--bg-secondary));*/
+    /*}*/
+
+    /*.overview-container.show-all {*/
+    /*    max-height: 500px;*/
+    /*}*/
+
+    /*.overview-container.show-all::after {*/
+    /*    display: none;*/
+    /*}*/
+    /*.show-summary-btn {*/
+    /*    display: block;*/
+    /*    margin: 10px auto 0;*/
+    /*    background-color: var(--bg-tertiary);*/
+    /*    border: 1px solid var(--border-secondary);*/
+    /*    color: var(--text-tertiary);*/
+    /*    font-weight: bold;*/
+    /*    padding: 6px 14px;*/
+    /*    font-size: 12px;*/
+    /*    border-radius: 20px;*/
+    /*    cursor: pointer;*/
+    /*    transition: all 0.2s ease;*/
+    /*}*/
+
+    /*.show-summary-btn:hover {*/
+    /*    background-color: var(--bg-button-hover);*/
+    /*    border-color: var(--text-muted);*/
+    /*}*/
+
+    /*.overview-container.show-all + .show-summary-btn {*/
+    /*    margin-top: 15px;*/
+    /*}*/
 }
