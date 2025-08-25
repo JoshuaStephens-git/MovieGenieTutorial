@@ -65,4 +65,19 @@ document.addEventListener('DOMContentLoaded', function () {
     } catch (e) {
         console.error("Could not parse movie data from server:", e);
     }
+
+    const showMoreGenresBtn = document.getElementById('show-more-genres');
+    if (showMoreGenresBtn) {
+        showMoreGenresBtn.addEventListener('click', function() {
+            const genreContainer = this.closest('.movie-selection-container');
+
+            genreContainer.classList.toggle('show-all');
+
+            if (genreContainer.classList.contains('show-all')) {
+                this.innerHTML = 'Show Less <span class="arrow">↑</span>';
+            } else {
+                this.innerHTML = 'Show More <span class="arrow">↓</span>';
+            }
+        });
+    }
 });
