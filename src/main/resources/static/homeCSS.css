@@ -68,25 +68,12 @@ button {
 }
 
 .selector-btn.active {
-    background: linear-gradient(90deg, rgba(24.7, 60.8, 88.2, 1) 0%, rgba(72.9, 52.5, 76.5, 1) 100%);
+    background: var(--bg-gradient);
     color: var(--text-primary);
     border-color: var(--accent-color);
     font-weight: bold;
     background-size: 200% auto;
-    animation: radiate 3s ease-in-out infinite;
-}
-
-/* Define the animations movement */
-@keyframes radiate {
-    0% {
-        background-position: 0 25%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0 50%;
-    }
+    animation: var(--bg-animation);
 }
 
 /* show more genres btn */
@@ -120,9 +107,9 @@ button {
     justify-content: center;
 }
 #submit-btn {
-    background: linear-gradient(90deg, rgba(24.7, 60.8, 88.2, 1) 0%, rgba(72.9, 52.5, 76.5, 1) 100%);
+    background: var(--bg-gradient);
     background-size: 200% auto;
-    animation: radiate 3s ease-in-out infinite;
+    animation: var(--bg-animation);
 }
 
 /* Movie Card Styles */
@@ -284,4 +271,17 @@ button {
     /*.overview-container.show-all + .show-summary-btn {*/
     /*    margin-top: 15px;*/
     /*}*/
+}
+
+/* animations */
+@keyframes radiate {
+    0% {
+        background-position: 0 25%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
 }

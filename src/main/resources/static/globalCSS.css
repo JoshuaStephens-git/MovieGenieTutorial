@@ -9,6 +9,8 @@
     --bg-button: #3a3a3a;
     --bg-button-hover: #555;
     --bg-destructive: #c94c4c;
+    --bg-gradient: linear-gradient(90deg, rgba(24.7, 60.8, 88.2, 1) 0%, rgba(72.9, 52.5, 76.5, 1) 100%);
+    --bg-animation: radiate 3s ease-in-out infinite;
 
     /* Text color */
     --text-primary: #ffffff;
