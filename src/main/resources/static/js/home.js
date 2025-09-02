@@ -80,4 +80,21 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+    const summaryButtons = document.querySelectorAll('.show-summary-btn');
+    summaryButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const overviewContainer = this.closest('.movie-card').querySelector('.overview-container');
+
+            if (overviewContainer && overviewContainer.classList.contains('overview-container')) {
+                overviewContainer.classList.toggle('show-all');
+
+                if (overviewContainer.classList.contains('show-all')) {
+                    this.innerHTML = 'Hide Summary';
+                } else {
+                    this.innerHTML = 'Show Summary';
+                }
+            }
+        });
+    });
 });

@@ -171,6 +171,11 @@ button {
     padding: 5px 15px;
 }
 
+/* disabling show summary button on bigger screens */
+.show-summary-btn {
+    display: none;
+}
+
 /* Mobile stlying */
 @media (max-width: 768px) {
     /* Form/button styles  */
@@ -223,54 +228,53 @@ button {
         transform: none;
     }
 
-    /* show summary btn */
-    /* NEED TO update tutorial to include show summary btn for mobile */
-    /*.overview-container {*/
-    /*    max-height: 0;*/
-    /*    overflow: hidden;*/
-    /*    position: relative;*/
-    /*    transition: max-height 0.3s ease;*/
-    /*}*/
+     /*show summary btn */
+    .overview-container {
+        max-height: 0;
+        overflow: hidden;
+        position: relative;
+        transition: max-height 0.3s ease;
+    }
 
-    /*.overview-container::after {*/
-    /*    content: '';*/
-    /*    position: absolute;*/
-    /*    bottom: 0;*/
-    /*    left: 0;*/
-    /*    right: 0;*/
-    /*    height: 1.5em;*/
-    /*    background: linear-gradient(to bottom, transparent, var(--bg-secondary));*/
-    /*}*/
+    .overview-container::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1.5em;
+        background: linear-gradient(to bottom, transparent, var(--bg-secondary));
+    }
 
-    /*.overview-container.show-all {*/
-    /*    max-height: 500px;*/
-    /*}*/
+    .overview-container.show-all {
+        max-height: 500px;
+    }
 
-    /*.overview-container.show-all::after {*/
-    /*    display: none;*/
-    /*}*/
-    /*.show-summary-btn {*/
-    /*    display: block;*/
-    /*    margin: 10px auto 0;*/
-    /*    background-color: var(--bg-tertiary);*/
-    /*    border: 1px solid var(--border-secondary);*/
-    /*    color: var(--text-tertiary);*/
-    /*    font-weight: bold;*/
-    /*    padding: 6px 14px;*/
-    /*    font-size: 12px;*/
-    /*    border-radius: 20px;*/
-    /*    cursor: pointer;*/
-    /*    transition: all 0.2s ease;*/
-    /*}*/
+    .overview-container.show-all::after {
+        display: none;
+    }
+    .show-summary-btn {
+        display: block;
+        margin: 10px auto 0;
+        background-color: var(--bg-tertiary);
+        border: 1px solid var(--border-secondary);
+        color: var(--text-tertiary);
+        font-weight: bold;
+        padding: 6px 14px;
+        font-size: 12px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: var(--transition-standard);
+    }
 
-    /*.show-summary-btn:hover {*/
-    /*    background-color: var(--bg-button-hover);*/
-    /*    border-color: var(--text-muted);*/
-    /*}*/
+    .show-summary-btn:hover {
+        background-color: var(--bg-button-hover);
+        border-color: var(--text-muted);
+    }
 
-    /*.overview-container.show-all + .show-summary-btn {*/
-    /*    margin-top: 15px;*/
-    /*}*/
+    .overview-container.show-all + .show-summary-btn {
+        margin-top: 15px;
+    }
 }
 
 /* animations */
