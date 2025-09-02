@@ -80,4 +80,19 @@ public class HomeController {
     public String contact() {
         return "contact";
     }
+
+    @GetMapping("/privacy")
+    public String privacy() {
+        return "privacy";
+    }
+
+    @GetMapping("/terms")
+    public String terms() {
+        return "terms";
+    }
+
+    @GetMapping("/cookie")
+    public String cookies() {
+        return "cookies";
+    }
 }
