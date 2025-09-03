@@ -68,10 +68,6 @@
     cursor: pointer;
 }
 
-#contact-form button:hover {
-    background-color: #a1c2ff;
-}
-
 /* animations */
 @keyframes radiate {
     0% {
