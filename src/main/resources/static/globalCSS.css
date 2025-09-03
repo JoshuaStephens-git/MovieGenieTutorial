@@ -9,6 +9,8 @@
     --bg-button: #3a3a3a;
     --bg-button-hover: #555;
     --bg-destructive: #c94c4c;
+    --bg-gradient: linear-gradient(90deg, rgba(24.7, 60.8, 88.2, 1) 0%, rgba(72.9, 52.5, 76.5, 1) 100%);
+    --bg-animation: radiate 3s ease-in-out infinite;
 
     /* Text color */
     --text-primary: #ffffff;
@@ -22,11 +24,12 @@
     --border-secondary: #555;
 
     /* Accent color */
-    --accent-color: #82aaff;
+    --accent-color: #A95CE8;
 
     /* Misc */
     --transition-standard: all 0.2s ease;
     --shadow-standard: 0 2px 5px rgba(0, 0, 0, 0.5);
+    --seperator-line: 1px solid var(--border-primary);
 }
 /* ------ Generic Btn Styles ----- */
 .btn {
@@ -60,15 +63,6 @@
 }
 
 /* ----- Header Styling ---- */
-
-/*
-Placeholder header styling
-To be deleted upon addition of genie logo
- */
-header {
-    text-align: center;
-}
-
 .logo-container a {
     display: flex;
     justify-content: center;
@@ -78,6 +72,7 @@ header {
 
 .genie-logo {
     max-width: 50%;
+    min-width: 100px;
     height: auto;
     transition: var(--transition-standard);
     transform: translateX(10%);

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About The Movie Genie</title>
+    <link rel="stylesheet" th:href="@{/globalCSS.css}">
+    <link rel="stylesheet" th:href="@{/aboutCSS.css}">
+</head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+
+<main>
+    <article class="about-container">
+
+        <h2>Behind the Magic</h2>
+
+        <blockquote>
+            <p>Your day is done, dinner is ready, and it’s finally time to relax.
+                You’re determined to watch something new and exciting.
+                30 minutes and a cold meal later, you reluctantly put on the same
+                movie you’ve seen a dozen times. </p>
+        </blockquote>
+
+        <p>
+            Sound familiar? I created <strong>The Movie Genie</strong> because I was
+            tired of the cold dinner and endless scroll.
+        </p>
+
+        <p>
+            My name is Josh, and this website started as a way for me to learn the basics of Spring Boot and
+            Thymeleaf. I wanted to create a simple, easy-to-use movie recommendation tool that didn't take a bunch of
+            configuration to get a movie suggestion. Once I (mostly) completed the initial project, I decided it would
+            be a great opportunity to create an in-depth tutorial on how to replicate this project. The original, found
+            <a href="https://moviegenie.watch">here</a>, showcases the complete project. I hope you find this website
+            and tutorial useful in developing your own <strong>The Movie Genie</strong>!
+        </p>
+
+        <h3>The Genie's Next Wish</h3>
+
+        <p>
+            The magic is just getting started! In the future, I plan to incorporate even more
+            features:
+        </p>
+        <ul>
+            <li><strong>More Filters</strong>: Narrow down choices by mood, streaming service, and more.</li>
+            <li><strong>TV Genie</strong>: Find the perfect TV show as easily as you find a movie.</li>
+            <li><strong>Personal Watchlist</strong>: Save your favorite movie picks directly in your browser to view later.</li>
+        </ul>
+
+        <p>
+            <strong>The Movie Genie</strong> is a work in progress,
+            so your feedback is incredibly valuable. If you have a suggestion or find a bug,
+            please send it my way via the <a href="/contact">contact page</a>.
+        </p>
+
+        <p>
+            Thanks for visiting, and I hope the Genie makes your next movie night a great one!
+        </p>
+
+    </article>
+</main>
+
+
+<div class="navigation-bar">
+    <a href="/home" class="btn btn-primary">← Back to the Genie</a>
+</div>
+
+<!--FOOTER-->
+<footer th:insert="~{fragments/footer :: footer}"></footer>
+
+</body>
+</html>

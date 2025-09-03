@@ -41,35 +41,60 @@ document.addEventListener('DOMContentLoaded', function () {
     function saveMoviesToHistory(newMovies) {
         const consentCookie = document.cookie.split('; ').find(row => row.startsWith('cookieyes-consent='));
         if (consentCookie && consentCookie.includes('functional:no')) {
-            console.log('User has declined functional cookies. History will not be saved.');
-            return;
+            return console.log('User has declined functional cookies. History will not be saved.');
         }
-        const historyJSON = localStorage.getItem('movieHistory');
-        let history = historyJSON ? JSON.parse(historyJSON) : [];
-        history.unshift(...newMovies);
+
         const MAX_HISTORY_SIZE = 50;
-        if (history.length > MAX_HISTORY_SIZE) {
-            history = history.slice(0, MAX_HISTORY_SIZE);
-        }
-        localStorage.setItem('movieHistory', JSON.stringify(history));
+        const history = JSON.parse(localStorage.getItem('movieHistory') || '[]');
+        const updatedHistory = [...newMovies, ...history].slice(0, MAX_HISTORY_SIZE);
+
+        localStorage.setItem('movieHistory', JSON.stringify(updatedHistory));
         console.log('Movie history saved to local storage.');
     }
 
-    const moviesDataElement = document.getElementById('movies-data');
-    if (moviesDataElement) {
-        try {
-            const moviesFromServer = JSON.parse(moviesDataElement.textContent);
-            if (moviesFromServer && moviesFromServer.length > 0) {
-                const moviesToSave = moviesFromServer.map(movie => ({
-                    id: movie.id,
-                    title: movie.title,
-                    releaseDate: movie.releaseDate,
-                    rating: movie.rating
-                }));
-                saveMoviesToHistory(moviesToSave);
-            }
-        } catch (e) {
-            console.error("Could not parse movie data from server:", e);
+    try {
+        const moviesDataElement = document.getElementById('movies-data');
+        const moviesFromServer = JSON.parse(moviesDataElement?.textContent || '[]');
+
+        if (moviesFromServer.length > 0) {
+            const moviesToSave = moviesFromServer.map(
+                ({ id, title, releaseDate, rating }) => ({ id, title, releaseDate, rating })
+            );
+            saveMoviesToHistory(moviesToSave);
         }
+    } catch (e) {
+        console.error("Could not parse movie data from server:", e);
     }
+
+    const showMoreGenresBtn = document.getElementById('show-more-genres');
+    if (showMoreGenresBtn) {
+        showMoreGenresBtn.addEventListener('click', function() {
+            const genreContainer = this.closest('.movie-selection-container');
+
+            genreContainer.classList.toggle('show-all');
+
+            if (genreContainer.classList.contains('show-all')) {
+                this.innerHTML = 'Show Less <span class="arrow">↑</span>';
+            } else {
+                this.innerHTML = 'Show More <span class="arrow">↓</span>';
+            }
+        });
+    }
+
+    const summaryButtons = document.querySelectorAll('.show-summary-btn');
+    summaryButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const overviewContainer = this.closest('.movie-card').querySelector('.overview-container');
+
+            if (overviewContainer && overviewContainer.classList.contains('overview-container')) {
+                overviewContainer.classList.toggle('show-all');
+
+                if (overviewContainer.classList.contains('show-all')) {
+                    this.innerHTML = 'Hide Summary';
+                } else {
+                    this.innerHTML = 'Show Summary';
+                }
+            }
+        });
+    });
 });
