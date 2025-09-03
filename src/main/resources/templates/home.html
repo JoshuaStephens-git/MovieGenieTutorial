@@ -98,7 +98,12 @@
 
     <section class="movie-results-section">
         <div class="movie-results">
-            <div class="movie-card" th:each="movie : ${movies}">
+            <div class="movie-card"
+                 th:each="movie : ${movies}"
+                 th:data-movie-id="${movie.id}"
+                 th:data-movie-title="${movie.title}"
+                 th:data-movie-release-date="${movie.releaseDate}"
+                 th:data-movie-rating="${movie.rating}">
                 <h3>
                     <a th:href="'https://www.themoviedb.org/movie/' + ${movie.id}" target="_blank" th:text="${movie.title}">
                         Movie Title
@@ -122,10 +127,6 @@
 <footer th:insert="~{fragments/footer :: footer}"></footer>
 
 <!-- JavaScript-->
-<script id="movies-data" type="application/json"
-        th:if="${moviesJson}"
-        th:utext="${moviesJson}">
-</script>
 <script th:src="@{/js/home.js}"></script>
 </body>
 </html>

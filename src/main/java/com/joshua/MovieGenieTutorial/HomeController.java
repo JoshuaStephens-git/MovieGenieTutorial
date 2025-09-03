@@ -1,7 +1,5 @@
 package com.joshua.MovieGenieTutorial;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -52,15 +50,6 @@ public class HomeController {
             model.addAttribute("movies", shuffledMovies);
             model.addAttribute("selectedDecade", decade);
             model.addAttribute("selectedGenre", genre);
-
-            try {
-                ObjectMapper objectMapper = new ObjectMapper();
-                String moviesJson = objectMapper.writeValueAsString(shuffledMovies);
-                model.addAttribute("moviesJson", moviesJson);
-            } catch (JsonProcessingException e) {
-                logger.error("Error serializing movies to JSON", e);
-                model.addAttribute("moviesJson", "[]"); // Send empty array on error
-            }
         }
 
         return "home";

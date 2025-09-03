@@ -52,18 +52,18 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('Movie history saved to local storage.');
     }
 
-    try {
-        const moviesDataElement = document.getElementById('movies-data');
-        const moviesFromServer = JSON.parse(moviesDataElement?.textContent || '[]');
-
-        if (moviesFromServer.length > 0) {
-            const moviesToSave = moviesFromServer.map(
-                ({ id, title, releaseDate, rating }) => ({ id, title, releaseDate, rating })
-            );
-            saveMoviesToHistory(moviesToSave);
-        }
-    } catch (e) {
-        console.error("Could not parse movie data from server:", e);
+    const movieCards = document.querySelectorAll('.movie-card');
+    if (movieCards.length > 0) {
+        const moviesToSave = Array.from(movieCards).map(card => {
+            return {
+                id: card.dataset.movieId,
+                title: card.dataset.movieTitle,
+                releaseDate: card.dataset.movieReleaseDate,
+                // Convert rating back to a number
+                rating: parseFloat(card.dataset.movieRating)
+            };
+        });
+        saveMoviesToHistory(moviesToSave);
     }
 
     const showMoreGenresBtn = document.getElementById('show-more-genres');
